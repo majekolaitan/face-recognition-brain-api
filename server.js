@@ -35,14 +35,6 @@ app.get('/', (req, res) => {
 })
 
 app.post('/signin', (req, res) => {
-
-	bcrypt.compare("apple", '$2a$10$OoQnhX5WrECYhXXauE7L6.L1s7Ia9GpddyqFmgCd.v9Cda1ywN7eW', function(err, res) {
-	    console.log('first guess', res)
-	});
-	bcrypt.compare("veggies", '$2a$10$OoQnhX5WrECYhXXauE7L6.L1s7Ia9GpddyqFmgCd.v9Cda1ywN7eW', function(err, res) {
-	    console.log('second guess', res)
-	});
-
 	if (req.body.email === database.users[0].email &&
 		req.body.password === database.users[0].password) {
 		res.json('success');
