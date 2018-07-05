@@ -6,6 +6,7 @@ const knex = require('knex');
 
 const register = require('./controllers/register');
 const signin = require('./controllers/signin');
+const handleProfileGet = require('./controllers/profile');
 
 const db = knex({
   client: 'pg',
