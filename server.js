@@ -80,7 +80,7 @@ app.get('/profile/:id', (req, res) => {
 		id: id
 	})
 	.then(user => {
-		console.log(user);
+		console.log(user[0]);
 	})
 	if (!found) {
 		res.status(400).json('not found');
