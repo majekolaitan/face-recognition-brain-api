@@ -60,12 +60,16 @@ app.post('/signin', (req, res) => {
 
 app.post('/register', (req, res) => {
 	const { email, name, password } = req.body;
-	db('users').insert({
+	db('users')
+		.returning('*')
+		.insert({
 		email: email,
 		name: name,
 		joined: new Date()
-	}).then(console.log)
-	res.json(database.users[database.users.length - 1]);
+	})
+	.then(response => {
+		res.json(response);
+	})
 })
 
 app.get('/profile/:id', (req, res) => {
