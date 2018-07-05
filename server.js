@@ -66,23 +66,12 @@ app.post('/register', (req, res) => {
 			hash: hash,
 			email: email
 		})
+		.into('login')
+		.returning('email')
+		.then(loginEmail => {
+
+		})
 	})
-	.into('login')
-	.returning('email')
-	.then(loginEmail => {
-		
-	})
-	db('users')
-		.returning('*')
-		.insert({
-		email: email,
-		name: name,
-		joined: new Date()
-	})
-	.then(user => {
-		res.json(user[0]);
-	})
-	.catch(err => res.status(400).json('unable to register'))
 })
 
 app.get('/profile/:id', (req, res) => {
