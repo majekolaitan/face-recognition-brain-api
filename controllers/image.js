@@ -5,7 +5,7 @@ const app = new Clarifai.App({
 });
 
 app.models
-	.predict(Clarifai.FACE_DETECT_MODEL, this.state.input)
+	.predict(Clarifai.FACE_DETECT_MODEL, req.body.input)
 
 const handleImage = (req, res, db) => {
 	const { id } = req.body;
