@@ -60,6 +60,18 @@ app.post('/signin', (req, res) => {
 
 app.post('/register', (req, res) => {
 	const { email, name, password } = req.body;
+	const hash = bcrypt.hashSync(password);
+	db.transaction(trx => {
+		trx.insert({
+			hash: hash,
+			email: email
+		})
+	})
+	.into('login')
+	.returning('email')
+	.then(loginEmail => {
+		
+	})
 	db('users')
 		.returning('*')
 		.insert({
