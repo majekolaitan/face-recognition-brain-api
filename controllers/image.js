@@ -1,3 +1,9 @@
+const Clarifai = require('clarifai');
+
+const app = new Clarifai.App({
+ apiKey: 'a6e86d74a15746ceab990eca41e3003b'
+});
+
 const handleImage = (req, res, db) => {
 	const { id } = req.body;
 	db('users').where('id', '=', id)
