@@ -83,6 +83,7 @@ app.get('/profile/:id', (req, res) => {
 			res.status(400).json('not found');
 		}
 	})
+	.catch(err => res.status(400).json('error getting user'))
 })
 
 app.put('/image', (req, res) => {
